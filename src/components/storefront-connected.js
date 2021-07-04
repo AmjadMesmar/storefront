@@ -3,15 +3,38 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState, useContext } from "react";
 import  '../scss/storefront.scss';
-import { CardHeader,Button, Grid , GridList } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+import {MaterialGrid} from '../Material-UI/MaterialGrid'
+import Paper from "@material-ui/core/Paper";
+import { makeStyles } from "@material-ui/core/styles";
 import { styled } from '@material-ui/core/styles';
 import useAjax from "../hooks/useajax";
+
+const styles = {
+  paper: {
+    // padding: "1vw",
+    textAlign: "center",
+    color: "#000000",
+    whiteSpace: "nowrap",
+    background: "#DDDDDD",
+    marginTop: "1vh",
+    marginBottom: "1vh",
+    marginLeft: "2vh",
+    marginRight: "2vh",
+    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+    // width:"30vw"
+  }
+};
+
+const useStyles = makeStyles(styles);
 
 
 const storefrontAPI = "https://api-js401.herokuapp.com/api/v1/products";
 
 const Storefront = () => {
   
+  const classes = useStyles();
 
   let [requestHandler] = useAjax();
   const [list, setList] = useState([]);
@@ -102,7 +125,7 @@ const Storefront = () => {
 
   // useEffect(getStorefront, []);
   const MyButton = styled(Button)({
-    background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+    // background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
     border: 0,
     borderRadius: 3,
     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
@@ -114,23 +137,22 @@ const Storefront = () => {
     <>
     <h2>Browse our categories</h2>
     <nav id="category">
-      <a href="#" onClick={getStorefront} >ELECTRONICS</a>
+      <MyButton href="#" onClick={getStorefront} >ELECTRONICS</MyButton>
 
-      <a href="#" onClick={getStorefront} >FOOD</a>
+      <MyButton href="#" onClick={getStorefront} >FOOD</MyButton>
 
     </nav>
     <h2 id="catageroyHeading">{list[0]?list[0].category.toUpperCase():null}</h2>
     <p id="catageroyDescribtion">{list[0]?'Category Description Goes Here':null}</p>
     {/* <section id="displayedData"> */}
   {/* <MyButton>STOREFRONT</MyButton> */}
-  <GridList
+  <Grid
         container
         // direction="row"
-        cols={3}
-        // justify="center"
-        // alignItems="center"
-        // spacing={5}
-        
+        cols={2}
+        justify="center"
+        alignItems="center"
+        spacing={2}        
       >
 
 
@@ -139,16 +161,18 @@ const Storefront = () => {
         list.map ((element) => {
 
         return (
-        <div>
+        <Grid item xs={6}>
+          <Paper className={classes.paper}>
         <img className="sourceImage" src="https://productmanagementfestival.com/wp-content/uploads/2017/01/sell-your-product-online.jpg" alt=""/>
         <h4 key={element._id}>{element.name}</h4>
         <a className="cardLink" href="#" >ADD TO CART</a>
         <a className="cardLink" href="#" >VIEW DETAILS</a>
-        </div>
+        </Paper>
+        </Grid>
         )
       })
     }
-     </GridList>
+     </Grid>
 
 
 
