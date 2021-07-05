@@ -11,10 +11,9 @@
 //     gap: 2px;
 // }
 
-#displayedData div {
-    max-width: 50%;
-    background-color:gray;
-}
+// #displayedData {
+// margin:auto;
+// }
 
 .cardButton {
     padding: 3px;
@@ -26,8 +25,10 @@ color: Blue;
 font-size: 25px;
 }
 
-#category a:nth-child(2){
-border-left: 1px solid blue;
+#category{
+border-left: 2px solid blue;
+margin-left:2px;
+border-top-left-radius: 0;
 }
 
 
