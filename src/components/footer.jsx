@@ -3,10 +3,11 @@ import '../scss/footer.scss'
 
 
 const Footer = () => {
+    
     return (
-        <footer>
-            &copy; Code fellows, Amjad Mesmar
-        </footer>
+
+   <footer id="footer"> &copy; Code fellows, Amjad Mesmar</footer>
+
     );
 };
 

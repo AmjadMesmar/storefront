@@ -135,6 +135,7 @@ const Storefront = () => {
   });
   return (
     <>
+    <main>
     <h2>Browse our categories</h2>
     <nav id="category">
       <MyButton href="#" onClick={getStorefront} >ELECTRONICS</MyButton>
@@ -175,7 +176,7 @@ const Storefront = () => {
      </Grid>
 
 
-
+     </main>
     </>
   );
 };
