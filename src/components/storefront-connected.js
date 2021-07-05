@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
+
 import React, { useEffect, useState, useContext } from "react";
 import  '../scss/storefront.scss';
 import Button from '@material-ui/core/Button';
@@ -13,7 +14,7 @@ import useAjax from "../hooks/useajax";
 
 const styles = {
   paper: {
-    // padding: "1vw",
+    // padding: "theme.spacing(1)",
     textAlign: "center",
     color: "#000000",
     whiteSpace: "nowrap",
@@ -22,8 +23,8 @@ const styles = {
     marginBottom: "1vh",
     marginLeft: "2vh",
     marginRight: "2vh",
-    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-    // width:"30vw"
+    boxShadow: '5 3px 5px 2px rgba(255, 105, 135, .3)',
+    width:"30vw"
   }
 };
 
@@ -136,24 +137,22 @@ const Storefront = () => {
   return (
     <>
     <main>
-    <h2>Browse our categories</h2>
+    {/* <h2>Browse our categories</h2>
     <nav id="category">
       <MyButton href="#" onClick={getStorefront} >ELECTRONICS</MyButton>
 
       <MyButton href="#" onClick={getStorefront} >FOOD</MyButton>
 
-    </nav>
+    </nav> */}
     <h2 id="catageroyHeading">{list[0]?list[0].category.toUpperCase():null}</h2>
     <p id="catageroyDescribtion">{list[0]?'Category Description Goes Here':null}</p>
-    {/* <section id="displayedData"> */}
-  {/* <MyButton>STOREFRONT</MyButton> */}
-  <Grid
+  <Grid s={5}
         container
         // direction="row"
         cols={2}
         justify="center"
         alignItems="center"
-        spacing={2}        
+        spacing={2}    
       >
 
 
@@ -162,14 +161,14 @@ const Storefront = () => {
         list.map ((element) => {
 
         return (
-        <Grid item xs={6}>
+        // <Grid item xs={6}>
           <Paper className={classes.paper}>
         <img className="sourceImage" src={ `https://source.unsplash.com/random?${element.name}&quot`} alt=""/>
         <h4 key={element._id}>{element.name}</h4>
         <Button className="cardButton" >ADD TO CART</Button>
         <Button className="cardButton" >VIEW DETAILS</Button>
         </Paper>
-        </Grid>
+        // </Grid>
         )
       })
     }
