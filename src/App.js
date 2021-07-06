@@ -26,10 +26,10 @@ function App() {
           <Route exact path="/details"  >
             <Details />
           </Route>
-
-          <Footer />
         </Switch>
       </Router>
+      <Footer />
+
     </>
   );
 }
