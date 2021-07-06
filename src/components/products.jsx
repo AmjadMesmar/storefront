@@ -8,10 +8,12 @@ import '../scss/storefront.scss'
 import Grid from '@material-ui/core/Grid';
 import {MaterialGrid} from '../Material-UI/MaterialGrid'
 import Paper from "@material-ui/core/Paper";
+import { Link } from 'react-router-dom';
 import { makeStyles } from "@material-ui/core/styles";
 import { styled } from '@material-ui/core/styles';
 import {connect} from 'react-redux';
 import {addToCart} from '../store/cartReducer';
+import {ItemDetails} from '../store/detailsReducer';
 
 
 
@@ -44,6 +46,7 @@ const MyButton = styled(Button)({
 const useStyles = makeStyles(styles);
 
 const Products = (props) => {
+console.log("🚀 ~ file: products.jsx ~ line 47 ~ Products ~ props", props.state)
 
 const classes = useStyles();
 
@@ -72,7 +75,7 @@ const classes = useStyles();
         <img className="sourceImage" src={ `https://source.unsplash.com/random?${element.name}&quot`} alt=""/>
         <h4 key={element._id}>{element.name}</h4>
         <Button onClick={() => props.addToCart(element)} className="cardButton" >ADD TO CART</Button>
-        <Button className="cardButton" >VIEW DETAILS</Button>
+        <Button component={Link} to="/details" onClick={() => props.ItemDetails(element)} className="cardButton" >VIEW DETAILS</Button>
         </Paper>
         )
       }):null
@@ -87,7 +90,7 @@ const classes = useStyles();
 
 const mapStateToProps = (state) => ({state: state.Categories,cartState: state.Cart});
 
-const mapDispatchToProps = {addToCart};
+const mapDispatchToProps = {addToCart,ItemDetails};
 
 export default connect(mapStateToProps,mapDispatchToProps)(Products);
 
