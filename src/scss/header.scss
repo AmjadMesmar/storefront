@@ -26,3 +26,33 @@ header h1 {
   position: relative;
   left: 20px;
 }
+
+h1 span {
+position: relative;
+left: 69em;
+}
+
+#cartList {
+  background-color: rgba(85, 85, 179, 0.604);
+  color:white;
+  font-weight: bold;
+  max-width:5em;
+text-align: left;
+padding-right: 3em;
+position: fixed;
+top: 10%;
+left: 70em;
+}
+#cartList li {
+
+  text-align: center;
+  text-decoration:none;
+  list-style-type: none;
+}
+
+#cartCounter {
+  position: relative;
+  left: 60em;
+  bottom: .2em;
+  font-size: .5em;
+}

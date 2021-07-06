@@ -11,6 +11,8 @@ import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 import { styled } from '@material-ui/core/styles';
 import {connect} from 'react-redux';
+import {addToCart} from '../store/cartReducer';
+
 
 
 const styles = {
@@ -42,9 +44,7 @@ const MyButton = styled(Button)({
 const useStyles = makeStyles(styles);
 
 const Products = (props) => {
-    console.log("🚀 ~ file: products.jsx ~ line 68 ~ props.Categories.payload[0]?props.Categories.payload.map ~ props", props)
 
-  
 const classes = useStyles();
 
 
@@ -66,12 +66,12 @@ const classes = useStyles();
 
     {
 
-        props.state?props.state.map ((element) => {
+        props.state?props.state.map ((element,idx) => {
         return (
-          <Paper className={classes.paper}>
+          <Paper key={idx} className={classes.paper}>
         <img className="sourceImage" src={ `https://source.unsplash.com/random?${element.name}&quot`} alt=""/>
         <h4 key={element._id}>{element.name}</h4>
-        <Button className="cardButton" >ADD TO CART</Button>
+        <Button onClick={() => props.addToCart(element)} className="cardButton" >ADD TO CART</Button>
         <Button className="cardButton" >VIEW DETAILS</Button>
         </Paper>
         )
@@ -85,7 +85,9 @@ const classes = useStyles();
   );
 };
 
-const mapStateToProps = (state) => ({state: state.Categories});
+const mapStateToProps = (state) => ({state: state.Categories,cartState: state.Cart});
 
-export default connect(mapStateToProps)(Products);
+const mapDispatchToProps = {addToCart};
+
+export default connect(mapStateToProps,mapDispatchToProps)(Products);
 
