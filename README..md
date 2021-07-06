@@ -22,7 +22,7 @@ An e-commerce web application that let user search for their needed product base
 
 ### Storefront UML Diagram
 
-![Uml2]()
+![Uml2](./storefront-uml2jpg.jpeg)
 
 ### Storefront UML Diagram2
 
