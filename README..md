@@ -11,7 +11,7 @@ An e-commerce web application that let user search for their needed product base
 ## Links
 
 [Repository](https://github.com/AmjadMesmar/storefront)
-[Pull Request](https://github.com/AmjadMesmar/storefront/pull/1)
+[Pull Request](https://github.com/AmjadMesmar/storefront/pull/4)
 [Deployed App](https://souls-storefront.netlify.app/)
 
 ## UML Diagrams
@@ -20,10 +20,10 @@ An e-commerce web application that let user search for their needed product base
 
 ![Uml](./storefront-uml1.jpg)
 
-### Storefront UML Diagram
+### Storefront Multi-Reducers UML Diagram
 
-![Uml2](./storefront-uml2jpg.jpeg)
+![Uml2](./storefront-uml2.jpeg)
 
-### Storefront UML Diagram2
+### Storefront Thunk UML Diagram2
 
-![UML3]()
+![UML3](./storefront-uml3.jpg)
