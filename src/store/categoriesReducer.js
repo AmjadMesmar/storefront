@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/no-anonymous-default-export */
 import superagent from 'superagent';
-// this is a reducer
+import { createSlice } from "@reduxjs/toolkit";
 
 const storefrontAPI = "https://api-js401.herokuapp.com/api/v1/products";
 
@@ -61,57 +61,83 @@ let initialState = {
   ]
 }
 
-
-export default (state = null, action) => {
-
-  let { type, payload } = action;
-  let categoryArray = [];
-
-  switch (type) {
-
-    case 'electronics':
-
-      payload.forEach((data) => {
+const categoriesSlice = createSlice({
+  name: 'categories',
+  initialState: [],
+  reducers: {
+    electronicsCategory(state, action) {
+      let categoryArray = [];
+      action.payload.forEach((data) => {
         if (data.category === 'electronics')
-          categoryArray.push(data);
+        categoryArray.push(data);
       });
-
+      
       return categoryArray;
-
-    case 'food':
-
-      payload.forEach((data) => {
+    },
+    foodCategory(state, action) {
+      let categoryArray = [];
+      action.payload.forEach((data) => {
         if (data.category === 'food')
-          categoryArray.push(data);
+        categoryArray.push(data);
       });
-
+      
       return categoryArray;
 
-    default:
-      return state;
+    },
   }
+});
 
 
-}
+
+// export default (state = null, action) => {
+
+//   let { type, payload } = action;
+//   let categoryArray = [];
+
+//   switch (type) {
+
+//     case 'electronics':
+
+//       payload.forEach((data) => {
+//         if (data.category === 'electronics')
+//           categoryArray.push(data);
+//       });
+
+//       return categoryArray;
+
+//     case 'food':
+
+//       payload.forEach((data) => {
+//         if (data.category === 'food')
+//           categoryArray.push(data);
+//       });
+
+//       return categoryArray;
+
+//     default:
+//       return state;
+//   }
+
+
+// }
 
 export const electronics = (type) => (dispatch, state) => {
   return superagent.get(storefrontAPI)
     .then((results) => {
-      dispatch({
-        type: 'electronics',
-        payload: results.body.results
-      })
+      dispatch(electronicsCategory(results.body.results));
     });
-    };
+};
 
-    export const food = (type) => (dispatch, state) => {
-      return superagent.get(storefrontAPI)
-        .then((results) => {
-          dispatch({
-            type: 'food',
-            payload: results.body.results
-          })
-        });
-        };
+export const food = (type) => (dispatch, state) => {
+  return superagent.get(storefrontAPI)
+    .then((results) => {
+      dispatch(foodCategory(results.body.results));
+    });
+};
+
+// export reducer
+export default categoriesSlice.reducer;
+// export actions
+export const { electronicsCategory, foodCategory } = categoriesSlice.actions;
 
 

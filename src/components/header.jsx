@@ -7,7 +7,6 @@ import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import {ItemDetails} from '../store/detailsReducer';
 const  Header = (props)=>{
-console.log("🚀 ~ file: header.jsx ~ line 6 ~ Header ~ props", props.cartState.results)
     return (
         <>
         <AppBar component={Link} to="/" position="static">
