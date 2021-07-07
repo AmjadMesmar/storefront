@@ -15,8 +15,6 @@ import {connect} from 'react-redux';
 import {addToCart} from '../store/cartReducer';
 import {ItemDetails} from '../store/detailsReducer';
 
-
-
 const styles = {
   paper: {
     // padding: "theme.spacing(1)",
@@ -46,7 +44,6 @@ const MyButton = styled(Button)({
 const useStyles = makeStyles(styles);
 
 const Products = (props) => {
-console.log("🚀 ~ file: products.jsx ~ line 47 ~ Products ~ props", props.state)
 
 const classes = useStyles();
 
@@ -55,8 +52,8 @@ const classes = useStyles();
     <>
     <main>
 
-    <h2 id="catageroyHeading">{props.state?props.state[0].category.toUpperCase():null}</h2>
-    <p id="catageroyDescribtion">{props.state?'Category Description Goes Here':null}</p>
+    <h2 id="catageroyHeading">{props.state[0]?props.state[0].category.toUpperCase():null}</h2>
+    <p id="catageroyDescribtion">{props.state[0]?'Category Description Goes Here':null}</p>
   <Grid s={5}
         container
         // direction="row"
@@ -68,7 +65,7 @@ const classes = useStyles();
 
 
     {
-
+        
         props.state?props.state.map ((element,idx) => {
         return (
           <Paper key={idx} className={classes.paper}>

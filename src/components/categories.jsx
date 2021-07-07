@@ -21,7 +21,6 @@ const MyButton = styled(Button)({
   });
 
 const Categories = ((props) =>{
-
 return (
     <>
     <h2>Browse our categories</h2>

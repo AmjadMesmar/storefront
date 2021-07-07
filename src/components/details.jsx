@@ -9,6 +9,9 @@ import Paper from '@material-ui/core/Paper';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
+import { useDispatch, useSelector } from 'react-redux';
+import {ItemDetails} from '../store/detailsReducer';
+
 // import SimpleCart from '../cart/simple-cart';
 
 const UseStyles = makeStyles((theme) => ({
@@ -67,9 +70,12 @@ const UseStyles = makeStyles((theme) => ({
   }));
 
 function Details(props) {
-  useEffect(() => {
-    return props.inStock;
-  },)
+  const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(ItemDetails(props));
+  // },[props,dispatch]);
+
     const classes = UseStyles();
     let detailsData =props.detailsState;
     return (
@@ -129,5 +135,5 @@ function Details(props) {
 
 const mapStateToProps = (state) => ({detailsState: state.Details});
 
-const mapDispatchToProps = {addToCart,deleteFromCart};
+const mapDispatchToProps = {addToCart,deleteFromCart,ItemDetails};
 export default connect(mapStateToProps,mapDispatchToProps)(Details)
